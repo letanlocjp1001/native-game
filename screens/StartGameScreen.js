@@ -41,9 +41,10 @@ const StartGameScreen = (props) => {
     const updateLayout = () => {
       setButtonWidth(Dimensions.get('window').width / 4)
     }
-    Dimensions.addEventListener('change', updateLayout)
+    const subscription = Dimensions.addEventListener('change', updateLayout)
+
     return () => {
-      Dimensions.removeEventListener('change', updateLayout)
+      subscription?.remove()
     }
   })
 
@@ -106,7 +107,7 @@ const StartGameScreen = (props) => {
                     onPress={resetInputHandler}
                   />
                 </View>
-                <View style={styles.button}>
+                <View style={{ width: buttonWidth }}>
                   <Button
                     title='Confirm'
                     color={Colors.primary}
