@@ -13,7 +13,7 @@ import Colors from '../constants/colors'
 const MainButton = (props) => {
   let ButtonContainer = TouchableOpacity
 
-  if (Platform.OS === 'android' && Platform.Version >= 21) {
+  if (Platform.Version >= 21) {
     ButtonContainer = TouchableNativeFeedback
   }
   return (
