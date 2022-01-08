@@ -59,9 +59,11 @@ const GameScreen = (props) => {
       setAvailableDeviceHeight(Dimensions.get('window').height)
     }
 
-    const subscription = Dimensions.addEventListener('change', updateLayout)
+    Dimensions.addEventListener('change', updateLayout)
 
-    return () => subscription?.remove()
+    return () => {
+      Dimensions.removeEventListener('change', updateLayout)
+    }
   })
 
   useEffect(() => {
